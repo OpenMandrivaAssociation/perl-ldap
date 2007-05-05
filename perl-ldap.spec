@@ -1,6 +1,6 @@
 %define name perl-ldap
-%define version 0.33
-%define release %mkrel 3
+%define version 0.34
+%define release %mkrel 1
 
 Summary:	Perl modules for ldap
 Name:		%{name}
@@ -13,7 +13,17 @@ Group:		Development/Perl
 %if %{mdkversion} < 1010
 BuildRequires:	perl-devel >= 5.8.0
 %endif
-BuildRequires:	perl(Convert::ASN1)
+BuildRequires:  perl(Convert::ASN1)
+BuildRequires:  perl(Authen::SASL)
+BuildRequires:  perl(Digest::MD5)
+BuildRequires:  perl(Digest::HMAC_MD5)
+BuildRequires:  perl(GSSAPI)
+BuildRequires:  perl(URI::ldap)
+BuildRequires:  perl(IO::Socket::SSL)
+BuildRequires:  perl(MIME::Base64)
+BuildRequires:  perl(XML::SAX::Writer)
+BuildRequires:  perl(MIME::Base64)
+
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 Requires:	perl-Authen-SASL >= 2.00
