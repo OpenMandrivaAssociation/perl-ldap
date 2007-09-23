@@ -19,6 +19,7 @@ BuildRequires:  perl(IO::Socket::SSL)
 BuildRequires:  perl(MIME::Base64)
 BuildRequires:  perl(XML::SAX::Writer)
 BuildRequires:  perl(MIME::Base64)
+BuildRequires:  perl(XML::Filter::BufferText)
 Requires:	perl-Authen-SASL >= 2.00
 Requires:	perl-XML-Parser
 Requires:	perl-Convert-ASN1 >= 0.07
