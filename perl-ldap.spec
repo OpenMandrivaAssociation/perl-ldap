@@ -20,6 +20,7 @@ BuildRequires:  perl(MIME::Base64)
 BuildRequires:  perl(XML::SAX::Writer)
 BuildRequires:  perl(MIME::Base64)
 BuildRequires:  perl(XML::Filter::BufferText)
+BuildRequires:  openldap-servers
 Requires:	perl-Authen-SASL >= 2.00
 Requires:	perl-XML-Parser
 Requires:	perl-Convert-ASN1 >= 0.07
@@ -33,6 +34,19 @@ which provide an object-oriented interface to LDAP servers.
 %prep
 
 %setup -q -n %{name}-%{version}
+
+# perl path
+find -type f | xargs perl -pi -e "s|/usr/local/bin/perl|%{_bindir}/perl|g"
+chmod 644 contrib/*
+
+cat > test.cfg << EOF
+\$SERVER_EXE = "%{_sbindir}/slapd";
+\$SERVER_TYPE = "openldap2+ssl+ipc+sasl";
+\$HOST = "localhost";
+\$SCHEMA_DIR = "%{_datadir}/openldap/schema";
+\$EXTERNAL_TESTS = 0;
+1;
+EOF
 
 %build
 find -name \*.pm | xargs chmod 644
@@ -52,7 +66,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc CREDITS README
+%doc CREDITS README contrib
 %{perl_vendorlib}/LWP
 %{perl_vendorlib}/Bundle
 %{perl_vendorlib}/Net
