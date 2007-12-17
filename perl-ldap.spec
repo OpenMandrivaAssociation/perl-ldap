@@ -25,7 +25,6 @@ Requires:	perl-Authen-SASL >= 2.00
 Requires:	perl-XML-Parser
 Requires:	perl-Convert-ASN1 >= 0.07
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
 The perl-ldap distribution is a collection of perl modules
