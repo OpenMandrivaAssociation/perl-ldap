@@ -6,9 +6,8 @@ License:	GPL or Artistic
 Group:		Development/Perl
 URL:		http://search.cpan.org/dist/%{name}/
 Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{name}-%{version}.tar.bz2
-%if %{mdkversion} < 1010
+Patch0:		perl-ldap-make_test_config_fixes.diff
 BuildRequires:	perl-devel >= 5.8.0
-%endif
 BuildRequires:  perl(Convert::ASN1)
 BuildRequires:  perl(Authen::SASL)
 BuildRequires:  perl(Digest::MD5)
@@ -34,6 +33,7 @@ which provide an object-oriented interface to LDAP servers.
 %prep
 
 %setup -q -n %{name}-%{version}
+%patch0 -p1
 
 # perl path
 find -type f | xargs perl -pi -e "s|/usr/local/bin/perl|%{_bindir}/perl|g"
@@ -42,7 +42,8 @@ chmod 644 contrib/*
 cat > test.cfg << EOF
 \$SERVER_EXE = "%{_sbindir}/slapd";
 \$SERVER_TYPE = "openldap2+ssl+ipc+sasl";
-\$HOST = "localhost";
+\$SLAPD_DB = "bdb";
+\$HOST = "127.0.0.1";
 \$SCHEMA_DIR = "%{_datadir}/openldap/schema";
 \$EXTERNAL_TESTS = 0;
 1;
