@@ -1,14 +1,12 @@
 Summary:	Perl modules for ldap
 Name:		perl-ldap
-Version:	0.37
-Release:	%mkrel 4
+Version:	0.38
+Release:	%mkrel 1
 License:	GPL or Artistic
 Group:		Development/Perl
 URL:		http://search.cpan.org/dist/%{name}/
-Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{name}-%{version}.tar.gz
 Patch0:		perl-ldap-make_test_config_fixes.diff
-Patch1:		perl-ldap-0.37-ppolicy-fix-expiry-grace.patch
-Patch2:		perl-ldap-0.37-setpassword-send-control.patch
 BuildRequires:	perl-devel >= 5.8.0
 BuildRequires:  perl(Convert::ASN1)
 BuildRequires:  perl(Authen::SASL)
@@ -36,8 +34,6 @@ which provide an object-oriented interface to LDAP servers.
 
 %setup -q -n %{name}-%{version}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 # perl path
 find -type f | xargs perl -pi -e "s|/usr/local/bin/perl|%{_bindir}/perl|g"
