@@ -1,6 +1,6 @@
 Summary:	Perl modules for ldap
 Name:		perl-ldap
-Version:	0.38
+Version:	0.39
 Release:	%mkrel 1
 License:	GPL or Artistic
 Group:		Development/Perl
