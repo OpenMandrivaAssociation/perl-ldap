@@ -1,30 +1,37 @@
+%define upstream_name    ldap
+%define upstream_version 0.40
+
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary:	Perl modules for ldap
-Name:		perl-ldap
-Version:	0.39
-Release:	%mkrel 1
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-URL:		http://search.cpan.org/dist/%{name}/
-Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{name}-%{version}.tar.gz
+Url:		http://search.cpan.org/dist/%{name}/
+Source0:    ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{name}-%{upstream_version}.tar.gz
 Patch0:		perl-ldap-make_test_config_fixes.diff
-BuildRequires:	perl-devel >= 5.8.0
-BuildRequires:  perl(Convert::ASN1)
+
+BuildRequires:  openldap-servers
 BuildRequires:  perl(Authen::SASL)
-BuildRequires:  perl(Digest::MD5)
+BuildRequires:  perl(Convert::ASN1)
 BuildRequires:  perl(Digest::HMAC_MD5)
+BuildRequires:  perl(Digest::MD5)
 BuildRequires:  perl(GSSAPI)
-BuildRequires:  perl(URI::ldap)
 BuildRequires:  perl(IO::Socket::SSL)
 BuildRequires:  perl(MIME::Base64)
-BuildRequires:  perl(XML::SAX::Writer)
 BuildRequires:  perl(MIME::Base64)
+BuildRequires:  perl(URI::ldap)
 BuildRequires:  perl(XML::Filter::BufferText)
-BuildRequires:  openldap-servers
-Requires:	perl-Authen-SASL >= 2.00
-Requires:	perl-XML-Parser
-Requires:	perl-Convert-ASN1 >= 0.07
+BuildRequires:  perl(XML::SAX::Writer)
+BuildRequires:	perl-devel >= 5.8.0
+
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
+
+Requires:	perl(Authen::SASL)  >= 2.0.0
+Requires:	perl(Convert::ASN1) >= 0.70.0
+Requires:	perl(XML::Parser)
 
 %description
 The perl-ldap distribution is a collection of perl modules
@@ -32,7 +39,7 @@ which provide an object-oriented interface to LDAP servers.
 
 %prep
 
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{upstream_version}
 %patch0 -p1
 
 # perl path
@@ -59,7 +66,6 @@ find -name \*.pm | xargs chmod 644
 
 %install
 rm -rf %{buildroot}
-
 %makeinstall_std
 
 %clean
