@@ -1,9 +1,9 @@
 %define upstream_name    ldap
-%define upstream_version 0.4001
+%define upstream_version 0.43
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 3
+Release:    %mkrel 1
 
 Summary:	Perl modules for ldap
 License:	GPL+ or Artistic
