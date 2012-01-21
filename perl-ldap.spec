@@ -33,7 +33,6 @@ Requires:	perl(Authen::SASL)  >= 2.0.0
 Requires:	perl(Convert::ASN1) >= 0.70.0
 Requires:	perl(XML::Parser)
 # temporary dep due to the perl-5.14 bump
-BuildRequires:  perl-List-MoreUtils >= 0.320.0-4
 BuildRequires:  perl-Net-SSLeay >= 1.420.0-2
 
 %description
