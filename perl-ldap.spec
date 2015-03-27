@@ -1,14 +1,14 @@
 %define modname	ldap
-%define modver	0.44
+%define modver 0.62
 
 Summary:	Perl modules for ldap
 Name:		perl-%{modname}
 Version:	%perl_convert_version %{modver}
-Release:	10
+Release:	1
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{name}/
-Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{name}-%{modver}.tar.gz
+Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{name}-%{version}.tar.gz
 Patch0:	perl-ldap-make_test_config_fixes.diff
 BuildArch:	noarch
 BuildRequires:	openldap-servers
@@ -59,7 +59,7 @@ EOF
 find -name \*.pm | xargs chmod 644
 
 %build
-%__perl Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
@@ -74,4 +74,3 @@ find -name \*.pm | xargs chmod 644
 %{perl_vendorlib}/Bundle
 %{perl_vendorlib}/Net
 %{_mandir}/man3/*
-
