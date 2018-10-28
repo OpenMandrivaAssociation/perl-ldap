@@ -13,6 +13,7 @@ Patch0:	perl-ldap-make_test_config_fixes.diff
 BuildArch:	noarch
 BuildRequires:	openldap-servers
 BuildRequires:	perl(Module::Install)
+BuildRequires:	perl(CPAN)
 BuildRequires:	perl(Carp)
 BuildRequires:	perl(Convert::ASN1)
 BuildRequires:	perl(Encode)
