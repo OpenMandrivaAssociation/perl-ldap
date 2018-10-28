@@ -1,4 +1,4 @@
-%define modname	ldap
+%define modname ldap
 %define modver	0.44
 
 Summary:	Perl modules for ldap
@@ -12,6 +12,7 @@ Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{name}-%{modver}.tar
 Patch0:	perl-ldap-make_test_config_fixes.diff
 BuildArch:	noarch
 BuildRequires:	openldap-servers
+BuildRequires:	perl(Module::Install)
 BuildRequires:	perl(Carp)
 BuildRequires:	perl(Convert::ASN1)
 BuildRequires:	perl(Encode)
@@ -60,13 +61,13 @@ find -name \*.pm | xargs chmod 644
 
 %build
 %__perl Makefile.PL INSTALLDIRS=vendor
-%make
+%make_build
 
 %check
 #make test
 
 %install
-%makeinstall_std
+%make_install
 
 %files
 %doc CREDITS README contrib
