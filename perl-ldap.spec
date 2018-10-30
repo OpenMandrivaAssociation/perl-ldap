@@ -1,15 +1,14 @@
 %define modname ldap
-%define modver	0.44
+%define modver	0.65
 
 Summary:	Perl modules for ldap
 Name:		perl-%{modname}
 Version:	%perl_convert_version %{modver}
-Release:	11
+Release:	1
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{name}/
 Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{name}-%{modver}.tar.gz
-Patch0:	perl-ldap-make_test_config_fixes.diff
 BuildArch:	noarch
 BuildRequires:	openldap-servers
 BuildRequires:	perl(Module::Install)
@@ -33,6 +32,7 @@ BuildRequires:	perl(MIME::Base64)
 BuildRequires:	perl(XML::SAX::Base)
 BuildRequires:	perl(XML::SAX::Writer)
 BuildRequires:	perl(Data::Dumper)
+BuildRequires:	perl(Text::Soundex)
 BuildRequires:	perl(Test::More)
 BuildRequires:	perl(LWP::UserAgent)
 BuildRequires:	perl-devel
@@ -42,8 +42,7 @@ The perl-ldap distribution is a collection of perl modules
 which provide an object-oriented interface to LDAP servers.
 
 %prep
-%setup -qn %{name}-%{modver}
-%apply_patches
+%autosetup -p1 -n %{name}-%{modver}
 
 # perl path
 find -type f | xargs perl -pi -e "s|/usr/local/bin/perl|%{_bindir}/perl|g"
