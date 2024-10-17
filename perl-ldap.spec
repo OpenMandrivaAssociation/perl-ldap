@@ -7,7 +7,7 @@ Version:	%perl_convert_version %{modver}
 Release:	3
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/%{name}/
+Url:		https://search.cpan.org/dist/%{name}/
 Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{name}-%{modver}.tar.gz
 BuildArch:	noarch
 BuildRequires:	openldap-servers
