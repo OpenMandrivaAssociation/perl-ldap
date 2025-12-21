@@ -10,6 +10,7 @@ Group:		Development/Perl
 Url:		https://search.cpan.org/dist/%{name}/
 Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{name}-%{modver}.tar.gz
 BuildArch:	noarch
+BuildRequires:	make
 BuildRequires:	openldap-servers
 BuildRequires:	perl(Module::Install)
 BuildRequires:	perl(CPAN)
