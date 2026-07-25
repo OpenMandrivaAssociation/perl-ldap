@@ -3,11 +3,11 @@
 
 Summary:	Perl modules for ldap
 Name:		perl-%{modname}
-Version:	%perl_convert_version %{modver}
-Release:	3
+Version:	%{modver}
+Release:	4
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{name}/
+Url:		https://metacpan.org/dist/ldap
 Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{name}-%{modver}.tar.gz
 BuildArch:	noarch
 BuildRequires:	make
