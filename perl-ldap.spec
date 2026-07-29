@@ -4,7 +4,7 @@
 Summary:	Perl modules for ldap
 Name:		perl-%{modname}
 Version:	%{modver}
-Release:	4
+Release:	5
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/ldap
@@ -13,7 +13,6 @@ BuildArch:	noarch
 BuildRequires:	make
 BuildRequires:	openldap-servers
 BuildRequires:	perl(Module::Install)
-BuildRequires:	perl(CPAN)
 BuildRequires:	perl(Carp)
 BuildRequires:	perl(Convert::ASN1)
 BuildRequires:	perl(Encode)
@@ -60,8 +59,9 @@ cat > test.cfg << EOF
 EOF
 find -name \*.pm | xargs chmod 644
 
+sed -i "/auto_install/d" Makefile.PL 2>/dev/null || true
 %build
-%__perl Makefile.PL INSTALLDIRS=vendor
+%__perl -I. Makefile.PL INSTALLDIRS=vendor
 %make_build
 
 %check
