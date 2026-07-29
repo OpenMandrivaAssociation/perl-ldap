@@ -4,7 +4,7 @@
 Summary:	Perl modules for ldap
 Name:		perl-%{modname}
 Version:	%{modver}
-Release:	5
+Release:	6
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/ldap
@@ -32,7 +32,8 @@ BuildRequires:	perl(MIME::Base64)
 BuildRequires:	perl(XML::SAX::Base)
 BuildRequires:	perl(XML::SAX::Writer)
 BuildRequires:	perl(Data::Dumper)
-BuildRequires:	perl(Text::Soundex)
+# convert NEVR 3.50.0 > real 3.05 still preferred on aarch64
+# BuildRequires:	perl(Text::Soundex)
 BuildRequires:	perl(Test::More)
 BuildRequires:	perl(LWP::UserAgent)
 BuildRequires:	perl-devel
